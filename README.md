@@ -1,4 +1,5 @@
 # 📘 Documentação: Introdução ao Cypress para Testes Automatizados
+# Por Leonardo Guiato
 
 ## 🧠 O que é o Cypress?
 
