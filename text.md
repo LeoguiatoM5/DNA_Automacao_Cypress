@@ -31,4 +31,4 @@ cy.get("#ContentPlaceHolder1_ListSetorSelecionados")
 .should("contain", "452");
 
 npm run test:report
-npx cypress run --spec "cypress/e2e/.cy.js"
+npx cypress run --spec "cypress/e2e/fluxoCadastroClienteOtimizado.cy.js"

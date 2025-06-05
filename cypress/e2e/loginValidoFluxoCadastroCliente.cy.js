@@ -1,7 +1,3 @@
-Cypress.on("uncaught:exception", (err, runnable) => {
-  return false;
-});
-
 describe("Fluxo após login válido", () => {
   before(() => {
     cy.visit(
@@ -19,9 +15,9 @@ describe("Fluxo após login válido", () => {
   });
 
   it("Cadastro de Cliente", () => {
-    const cnpjBuscado = "22121179000178";
-    const nomeFantasia = "Teste Fantasia8";
-    const razaoSocial = "Teste8";
+    const cnpjBuscado = "87226577000102";
+    const nomeFantasia = "tESTE15";
+    const razaoSocial = "Teste15";
 
     cy.get("#nav > :nth-child(3) > .sf-with-ul").click();
     cy.contains("Cadastro de Cliente").click();
@@ -30,9 +26,15 @@ describe("Fluxo após login válido", () => {
     cy.get("#ContentPlaceHolder1_DDLTipoCli").select("CLIENTE - Bayer");
     cy.get("#ContentPlaceHolder1_PesRazaoSocial_Nome").type(razaoSocial);
     cy.get("#ContentPlaceHolder1_PesCNPJ_CPF").type(cnpjBuscado);
-    cy.get("#ContentPlaceHolder1_PesNomeFantasia").type(nomeFantasia);
+    cy.get("h1").click();
     cy.get("#ContentPlaceHolder1_PopupCNPJ_ctl00_btCancelarPopup").click();
-    cy.get("#ContentPlaceHolder1_PesNomeFantasia").type(nomeFantasia);
+    cy.get("#ContentPlaceHolder1_PesNomeFantasia")
+      .should("be.visible")
+      .invoke("val", nomeFantasia)
+      .trigger("input")
+      .trigger("change")
+      .trigger("blur")
+      .should("have.value", nomeFantasia);
     cy.get("#ContentPlaceHolder1_ListSetorVenda").select("454");
     cy.get("#ContentPlaceHolder1_btnAddSetorVenda").click();
     //Endereço
