@@ -1,4 +1,12 @@
 {
+  "name": "DNA Automacao",
+  "version": "1.0.0",
+  "scripts": {
+    "cypress:run": "cypress run",
+    "report:merge": "npx mochawesome-merge cypress/reports/mochawesome/*.json > cypress/reports/mochawesome/merged-report.json",
+    "report:generate": "npx marge cypress/reports/mochawesome/merged-report.json -f report -o cypress/reports/mochawesome",
+    "test:report": "npm run cypress:run && npm run report:merge && npm run report:generate"
+  },
   "devDependencies": {
     "cypress": "^14.3.0",
     "mochawesome": "^7.1.3",
