@@ -32,3 +32,7 @@ cy.get("#ContentPlaceHolder1_ListSetorSelecionados")
 
 npm run test:report
 npx cypress run --spec "cypress/e2e/fluxoCadastroClienteOtimizado.cy.js"
+cy.get("#ajaxLoading", { timeout: 1000000 }).should("not.be.visible");
+
+
+
