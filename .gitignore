@@ -3,3 +3,10 @@ cypress/videos/loginValidoFluxoCadastroCliente.cy.js.mp4
 cypress/screenshots/loginValidoFluxoCadastroCliente.cy.js/Fluxo após login válido -- Cadastro de Cliente (failed).png
 cypress/reports/html/mochawesome.html
 text.md
+Aula_1_Cypress_Fundamentos.docx
+cypress/reports/html/RelatóriosDeErros/MomentoDaFalhadeCarregamento(failed).png
+logs/errosJS-1749499998056.txt
+text.md
+cypress/reports/html/mochawesome.json
+cypress/reports/html/RelatóriosDeErros/\[DNA]\[Especialidades]erroAjax.html
+cypress/reports/html/RelatóriosDeErros/\[DNA]\[Especialidades]erroNomeFantasia.html
