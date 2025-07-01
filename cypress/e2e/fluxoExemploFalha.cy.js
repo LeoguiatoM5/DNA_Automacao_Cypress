@@ -1,4 +1,4 @@
-const { registrarErrosJS } = require("./errosJS");
+const { registrarErrosJS } = require("../pages/tratamentos/errosJS");
 
 registrarErrosJS();
 

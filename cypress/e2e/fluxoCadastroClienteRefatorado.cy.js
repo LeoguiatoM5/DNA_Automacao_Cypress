@@ -1,15 +1,15 @@
-const { registrarErrosJS } = require("./tratamentos/errosJS");
+const { registrarErrosJS } = require("../pages/tratamentos/errosJS.js");
 const {
   validarCampoSemMascara,
   validarCampoSemCase,
-} = require("./tratamentos/validacoesCampos");
+} = require("../pages/tratamentos/validacoesCampos.js");
 
 registrarErrosJS();
 
 describe("Fluxo após login válido", () => {
-  const cnpjBuscado = "78694422000100";
-  const nomeFantasia = "TesteFantasia37";
-  const razaoSocial = "Teste38";
+  const cnpjBuscado = "46587664000108";
+  const nomeFantasia = "TesteFantasia38";
+  const razaoSocial = "Teste39";
   const CEP = "14340000";
   const bairro = "centro";
   const logradouro = "centro";

@@ -10,3 +10,4 @@ text.md
 cypress/reports/html/mochawesome.json
 cypress/reports/html/RelatóriosDeErros/\[DNA]\[Especialidades]erroAjax.html
 cypress/reports/html/RelatóriosDeErros/\[DNA]\[Especialidades]erroNomeFantasia.html
+logs
