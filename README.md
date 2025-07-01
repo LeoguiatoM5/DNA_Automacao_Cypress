@@ -1,4 +1,5 @@
 # 📘 Documentação: Introdução ao Cypress para Testes Automatizados
+
 # Por Leonardo Guiato
 
 ## 🧠 O que é o Cypress?
@@ -6,6 +7,7 @@
 O **Cypress** é uma ferramenta de testes end-to-end (E2E), que roda diretamente no navegador e permite testar aplicações web de forma rápida, confiável e com uma sintaxe fácil de entender.
 
 ### ✅ Principais benefícios:
+
 - Escrita de testes fácil com JavaScript.
 - Execução rápida e com feedback visual.
 - Suporte nativo a screenshots e vídeos dos testes.
@@ -13,12 +15,14 @@ O **Cypress** é uma ferramenta de testes end-to-end (E2E), que roda diretamente
 
 ---
 
+Mudança
+
 ## 🛠️ Requisitos
 
 Antes de tudo, você precisa ter instalado:
 
-- [Node.js](https://nodejs.org/) (versão LTS recomendada)  
-- Um terminal (CMD, PowerShell, Terminal do VS Code, etc.)  
+- [Node.js](https://nodejs.org/) (versão LTS recomendada)
+- Um terminal (CMD, PowerShell, Terminal do VS Code, etc.)
 - Um editor de código (recomendo [VS Code](https://code.visualstudio.com/))
 
 ---
@@ -50,6 +54,7 @@ npx cypress open
 ```
 
 Esse comando irá:
+
 - Abrir a interface gráfica do Cypress.
 - Criar a estrutura de pastas automaticamente com alguns exemplos.
 
@@ -80,21 +85,21 @@ cypress.config.js   → Arquivo de configuração do Cypress
 ### 2. Crie o Script de Teste Simples de Login.
 
 ```js
-describe('Teste e2e', ()=>{   // 
-  beforeEach(()=>{   // beforeEach roda antes de cada teste
-    cy.visit('https://practicetestautomation.com/practice-test-login/')// navega para a url
-  })
+describe("Teste e2e", () => {
+  //
+  beforeEach(() => {
+    // beforeEach roda antes de cada teste
+    cy.visit("https://practicetestautomation.com/practice-test-login/"); // navega para a url
+  });
 
-  it('Login com usuario e senha invalidos', ()=>{ // teste de login com usuario e senha invalidos
-    cy.get('#username').type('teste')
-    cy.get('#password').type('123456')
-    cy.get('#submit').click()
-    cy.contains('Your username is invalid!')
-    
-  })
-    
-
-})
+  it("Login com usuario e senha invalidos", () => {
+    // teste de login com usuario e senha invalidos
+    cy.get("#username").type("teste");
+    cy.get("#password").type("123456");
+    cy.get("#submit").click();
+    cy.contains("Your username is invalid!");
+  });
+});
 ```
 
 ### 3. Rode o teste:
