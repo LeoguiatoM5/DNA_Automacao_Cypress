@@ -19,24 +19,19 @@ describe("Cadastro de Cliente com dados dinâmicos válidos", () => {
   const numeroLogradouro = faker.number.int({ min: 1, max: 9999 }).toString();
 
   beforeEach(() => {
-    cy.session("login-session", () => {
-      cy.visit(
-        "https://homologacaoesp.interplayers.com.br/PRJ/Especialidades/Acesso.aspx"
-      );
-      cy.get("#ContentPlaceHolder1_Control_Login2_Login1_UserName").type(
-        "admbayer@dnaspecialty.com.br"
-      );
-      cy.get("#ContentPlaceHolder1_Control_Login2_Login1_Password").type(
-        "12345678"
-      );
-      cy.get("#ContentPlaceHolder1_Control_Login2_Login1_LoginButton").click();
-    });
+    cy.visit(
+      "https://homologacaoesp.interplayers.com.br/PRJ/Especialidades/Acesso.aspx"
+    );
+    cy.get("#ContentPlaceHolder1_Control_Login2_Login1_UserName").type(
+      "admbayer@dnaspecialty.com.br"
+    );
+    cy.get("#ContentPlaceHolder1_Control_Login2_Login1_Password").type(
+      "12345678"
+    );
+    cy.get("#ContentPlaceHolder1_Control_Login2_Login1_LoginButton").click();
   });
 
   function cadastroCliente() {
-    cy.visit(
-      "https://homologacaoesp.interplayers.com.br/PRJ/Especialidades/Adm/admPdv.aspx"
-    );
     cy.get("#nav > :nth-child(3) > .sf-with-ul").click();
     cy.contains("Cadastro de Cliente").click();
     cy.get("#ContentPlaceHolder1_btNovoPDV").click();
