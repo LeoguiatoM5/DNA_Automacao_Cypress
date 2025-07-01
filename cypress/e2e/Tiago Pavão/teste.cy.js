@@ -1,4 +1,5 @@
 const { registrarErrosJS } = require("../../pages/tratamentos/errosJS.js");
+const { cadastroCliente } = require("../../pages/Functions/funcoes.js");
 
 registrarErrosJS();
 

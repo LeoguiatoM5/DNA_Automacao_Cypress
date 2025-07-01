@@ -11,9 +11,9 @@ O **Cypress** é uma ferramenta de testes end-to-end (E2E), que roda diretamente
 - Escrita de testes fácil com JavaScript.
 - Execução rápida e com feedback visual.
 - Suporte nativo a screenshots e vídeos dos testes.
-- Ótimo para testes de front-end.
+- Ótimo para testes de front-en
 
----
+## teste
 
 Mudança
 
