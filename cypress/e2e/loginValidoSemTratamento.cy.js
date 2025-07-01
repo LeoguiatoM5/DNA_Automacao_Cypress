@@ -1,4 +1,4 @@
-const { registrarErrosJS } = require("./errosJS");
+const { registrarErrosJS } = require("../pages/tratamentos/errosJS");
 
 registrarErrosJS();
 
@@ -21,9 +21,9 @@ describe("Cadastro de cliente e validação", () => {
   });
 
   it("Fluxo completo de cadastro e validação", () => {
-    const cnpjBuscado = "42539288000117";
-    const nomeFantasia = "TesteFantasia51";
-    const razaoSocial = "Teste51";
+    const cnpjBuscado = "05883936000121";
+    const nomeFantasia = "TesteFantasia54";
+    const razaoSocial = "Teste54";
     const CEP = "14340000";
     const bairro = "centro";
     const logradouro = "centro";
