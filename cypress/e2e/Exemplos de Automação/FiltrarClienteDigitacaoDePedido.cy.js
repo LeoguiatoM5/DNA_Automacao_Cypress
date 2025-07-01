@@ -1,10 +1,10 @@
 /// <reference types="cypress" />
 
-const { registrarErrosJS } = require("../pages/tratamentos/errosJS");
+const { registrarErrosJS } = require("../../pages/tratamentos/errosJS");
 const {
   validarCampoSemMascara,
   validarCampoSemCase,
-} = require("../pages/tratamentos/validacoesCampos");
+} = require("../../pages/tratamentos/validacoesCampos");
 
 registrarErrosJS();
 

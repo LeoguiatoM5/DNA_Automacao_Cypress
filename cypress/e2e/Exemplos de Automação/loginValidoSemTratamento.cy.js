@@ -1,4 +1,4 @@
-const { registrarErrosJS } = require("../pages/tratamentos/errosJS");
+const { registrarErrosJS } = require("../../pages/tratamentos/errosJS");
 
 registrarErrosJS();
 
@@ -21,14 +21,15 @@ describe("Cadastro de cliente e validação", () => {
   });
 
   it("Fluxo completo de cadastro e validação", () => {
-    const cnpjBuscado = "590431031000190";
-    const nomeFantasia = "TesteFantasia60";
-    const razaoSocial = "Teste60";
+    const cnpjBuscado = "05883936000121";
+    const nomeFantasia = "TesteFantasia54";
+    const razaoSocial = "Teste54";
     const CEP = "14340000";
     const bairro = "centro";
     const logradouro = "centro";
     const numeroLogradouro = "10";
 
+    // Acesso à tela de cadastro
     cy.visit(
       "https://homologacaoesp.interplayers.com.br/PRJ/Especialidades/Adm/admPdv.aspx"
     );
@@ -36,6 +37,7 @@ describe("Cadastro de cliente e validação", () => {
     cy.contains("Cadastro de Cliente").click();
     cy.get("#ContentPlaceHolder1_btNovoPDV").click();
 
+    // Dados do cliente
     cy.get("#ContentPlaceHolder1_trTipoDocumento").contains("JURIDICA").click();
     cy.get("#ContentPlaceHolder1_DDLTipoCli").select("CLIENTE - Bayer");
     cy.get("#ContentPlaceHolder1_PesRazaoSocial_Nome").type(razaoSocial, {
@@ -46,6 +48,7 @@ describe("Cadastro de cliente e validação", () => {
     });
     cy.get("h1").click();
     cy.get("#ContentPlaceHolder1_PopupCNPJ_ctl00_btCancelarPopup").click();
+
     cy.get("#ContentPlaceHolder1_PesNomeFantasia")
       .should("be.visible")
       .invoke("val", nomeFantasia)
@@ -53,9 +56,11 @@ describe("Cadastro de cliente e validação", () => {
       .trigger("change")
       .trigger("blur")
       .should("have.value", nomeFantasia);
+
     cy.get("#ContentPlaceHolder1_ListSetorVenda").select("454");
     cy.get("#ContentPlaceHolder1_btnAddSetorVenda").click();
 
+    // Endereço
     cy.get("#liAbaEndereco").click();
     cy.get("#ContentPlaceHolder1_dlEndereco_EndCep_0").type(CEP, {
       delay: 150,
@@ -72,63 +77,58 @@ describe("Cadastro de cliente e validação", () => {
       numeroLogradouro,
       { delay: 150 }
     );
+
     cy.get("#ContentPlaceHolder1_btEnviar").click();
     cy.get("#ajaxLoading", { timeout: 100000 }).should("not.be.visible");
 
+    // Consulta e validação
     cy.get("#ContentPlaceHolder1_txtCPFCNPJ").type(cnpjBuscado, { delay: 150 });
     cy.get("#ContentPlaceHolder1_BtnProcurar").click();
-    cy.get("#ajaxLoading", { timeout: 10000 }).should("not.be.visible");
+    cy.get("#ajaxLoading", { timeout: 100000 }).should("not.be.visible");
+
     cy.get(".gridRow > :nth-child(3)", { timeout: 100000 }).should(
       "contain.text",
       cnpjBuscado
     );
-
     cy.get("#ContentPlaceHolder1_rptResultado_imgSelecionar_0").click();
-    cy.get("#ContentPlaceHolder1_PesCNPJ_CPF", { timeout: 10000 }).should(
-      "be.visible"
+
+    cy.get("#ContentPlaceHolder1_PesCNPJ_CPF", { timeout: 10000 })
+      .should("be.visible")
+      .should("have.value", cnpjBuscado);
+
+    cy.get("#ContentPlaceHolder1_PesRazaoSocial_Nome").should(
+      "have.value",
+      razaoSocial
     );
-    cy.get("#ContentPlaceHolder1_PesCNPJ_CPF")
-      .invoke("val")
-      .then((val) => {
-        expect(val.replace(/\D/g, "")).to.equal(cnpjBuscado);
-      });
-    cy.get("#ContentPlaceHolder1_PesRazaoSocial_Nome")
-      .invoke("val")
-      .then((val) => {
-        expect(val.toLowerCase()).to.equal(razaoSocial.toLowerCase());
-      });
-    cy.get("#ContentPlaceHolder1_PesNomeFantasia")
-      .invoke("val")
-      .then((val) => {
-        expect(val.toLowerCase()).to.equal(nomeFantasia.toLowerCase());
-      });
+    cy.get("#ContentPlaceHolder1_PesNomeFantasia").should(
+      "have.value",
+      nomeFantasia
+    );
+
     cy.get("#ContentPlaceHolder1_ListSetorSelecionados > option").should(
       "contain.text",
       "(CARDIO) CAR005 Carlos Giorgenon"
     );
 
     cy.get("#liAbaEndereco").click();
-    cy.get("#ContentPlaceHolder1_dlEndereco_EndCep_0")
-      .invoke("val")
-      .then((val) => {
-        expect(val.replace(/\D/g, "")).to.equal(CEP);
-      });
+    cy.get("#ContentPlaceHolder1_dlEndereco_EndCep_0").should(
+      "have.value",
+      CEP
+    );
     cy.get("#ContentPlaceHolder1_dlEndereco_ddlEstados_0")
       .find(":selected")
       .should("contain.text", "SP");
     cy.get("#ContentPlaceHolder1_dlEndereco_idCidade_0")
       .find(":selected")
       .should("contain.text", "Brodowski");
-    cy.get("#ContentPlaceHolder1_dlEndereco_EndBairro_0")
-      .invoke("val")
-      .then((val) => {
-        expect(val.toLowerCase()).to.equal(bairro.toLowerCase());
-      });
-    cy.get("#ContentPlaceHolder1_dlEndereco_EndLogradouro_0")
-      .invoke("val")
-      .then((val) => {
-        expect(val.toLowerCase()).to.equal(logradouro.toLowerCase());
-      });
+    cy.get("#ContentPlaceHolder1_dlEndereco_EndBairro_0").should(
+      "have.value",
+      bairro
+    );
+    cy.get("#ContentPlaceHolder1_dlEndereco_EndLogradouro_0").should(
+      "have.value",
+      logradouro
+    );
     cy.get("#ContentPlaceHolder1_dlEndereco_txtNrLogradouro_0").should(
       "have.value",
       numeroLogradouro
