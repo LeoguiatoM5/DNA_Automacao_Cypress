@@ -27,9 +27,7 @@ describe("Fluxo após login válido", () => {
 
   it("Cadastro Classe", () => {
     const nomedivisao= "TESTEDNA"
-    //const ean= "7894561469" 
-    //const codigoproduto= "128"
-    
+        
     cy.get(':nth-child(4) > .sf-with-ul').click();
     cy.contains("Classe").click();
     cy.get('#ContentPlaceHolder1_btNovo').click();
