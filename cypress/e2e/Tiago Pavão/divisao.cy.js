@@ -26,15 +26,22 @@ describe("Fluxo após login válido", () => {
   });
 
   it("Cadastro Divisão", () => {
-    //const nomedivisao= "Divisão Teste"
+    const nomedivisao= "Divisão Teste"
     //const ean= "7894561469" 
     //const codigoproduto= "128"
     
     cy.get(':nth-child(4) > .sf-with-ul').click();
     cy.contains("Divisão").click();
     cy.get('#ContentPlaceHolder1_Button1').click();
-    cy.get('#ContentPlaceHolder1_txtDescricao').type("Divisão Teste");
-    //cy.get('#ContentPlaceHolder1_ddlEmpresa').selec ("ONCO");
+    cy.get('#ContentPlaceHolder1_txtDescricao').type(nomedivisao);
+    cy.get('#ContentPlaceHolder1_ddlEmpresa').select ("ONCO");
+    cy.get('.slider').click();
+    cy.get('#ContentPlaceHolder1_btSalvar').click();
+    cy.get('#ContentPlaceHolder1_txtProdutoNomeFiltro').type (nomedivisao);
+    cy.get('#ContentPlaceHolder1_BtnProcurar').click();
+    cy.get('tbody > :nth-child(2) > :nth-child(3)').should ("contain.text", nomedivisao);
+
+
     /*cy.get('#ContentPlaceHolder1_btNovoProduto').click()
     cy.get('#ContentPlaceHolder1_dropDivisaoCadastro').select ("CARDIOLOGIA")
     cy.get('#ContentPlaceHolder1_dropGrupoProdutoCadastro').select("CARDIOLOGIA - ASPIRINA PREVENT")

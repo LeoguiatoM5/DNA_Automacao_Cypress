@@ -26,7 +26,7 @@ describe("Fluxo após login válido", () => {
   });
 
   it("Cadastro Classe", () => {
-    //const nomedivisao= "Divisão Teste"
+    const nomedivisao= "TESTEDNA"
     //const ean= "7894561469" 
     //const codigoproduto= "128"
     
@@ -34,29 +34,13 @@ describe("Fluxo após login válido", () => {
     cy.contains("Classe").click();
     cy.get('#ContentPlaceHolder1_btNovo').click();
     cy.get('#ContentPlaceHolder1_txtCodigo').type ("123");
-    cy.get('#ContentPlaceHolder1_txtDescricao').type ("Classe Teste");
-    cy.get('.grid2 > .campo > .switch > .slider').click()
-    
-
-
-
-
-    /*cy.get('#ContentPlaceHolder1_btNovoProduto').click()
-    cy.get('#ContentPlaceHolder1_dropDivisaoCadastro').select ("CARDIOLOGIA")
-    cy.get('#ContentPlaceHolder1_dropGrupoProdutoCadastro').select("CARDIOLOGIA - ASPIRINA PREVENT")
-    cy.get('#ContentPlaceHolder1_dropProduto').select("ASPIRINA")
-    cy.get('#ContentPlaceHolder1_txtProDsc').type("Produto Teste")
-    cy.get('#ContentPlaceHolder1_txtProNome').type(nomeproduto)
-    cy.get('#ContentPlaceHolder1_txtProEAN').type(ean)
-    cy.get('#ContentPlaceHolder1_txtProCod').type(codigoproduto)
-    cy.get('.grid2 > .campo > .switch > .slider').click()
-    cy.get('#ContentPlaceHolder1_txtQTdCaixas').type("10")
-    cy.get('#ContentPlaceHolder1_txtQtdDentroCaixa').type("10")
-    cy.get('#ContentPlaceHolder1_btSalvar').click()
-    cy.get('#ContentPlaceHolder1_txtProdutoNomeFiltro').type(nomeproduto)
-    cy.get('#ContentPlaceHolder1_BtnProcurar').click()
-    cy.get('.gridRow > :nth-child(4)').should ("contain.text",ean)*/
-    
+    cy.get('#ContentPlaceHolder1_txtDescricao').type (nomedivisao);
+    cy.get(':nth-child(2) > .switch > .slider').click();
+    cy.get('#ContentPlaceHolder1_btSalvar').click();
+    cy.get('#ContentPlaceHolder1_TxtDesc').type(nomedivisao);
+    cy.get('#ContentPlaceHolder1_BtnProcurar').click();
+    cy.get('.gridRow > :nth-child(3)'). should ("contain.text",nomedivisao);
+      
 
    
   });
