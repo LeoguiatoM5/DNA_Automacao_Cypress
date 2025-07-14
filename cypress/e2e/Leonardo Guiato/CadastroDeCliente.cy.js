@@ -1,10 +1,14 @@
-const { registrarErrosJS } = require("../../pages/tratamentos/errosJS.js");
+import { faker } from "@faker-js/faker/locale/pt_BR";
+import { cnpj } from "cpf-cnpj-validator";
+
+Cypress.on("uncaught:exception", (err, runnable) => {
+  return false;
+});
+
 const {
   validarCampoSemMascara,
   validarCampoSemCase,
 } = require("../../pages/tratamentos/validacoesCampos.js");
-
-registrarErrosJS();
 
 describe("Cadastro de Cliente", () => {
   const cnpjGerado = cnpj.generate();
@@ -34,20 +38,20 @@ describe("Cadastro de Cliente", () => {
       "admbayer@dnaspecialty.com.br"
     );
     cy.get("#ContentPlaceHolder1_Control_Login2_Login1_Password").type(
-      "12345678"
+      "1234568"
     );
     cy.get("#ContentPlaceHolder1_Control_Login2_Login1_LoginButton").click();
   });
 
   /**
-   * Função para cadastrar um cliente.
-   * Utiliza:
-   * - cy.get() para selecionar elementos na tela
-   * - cy.contains() para buscar elemento que contenha texto específico
-   * - .click() para clicar em botões ou abas
-   * - .type() para preencher campos de texto
-   * - cy.wait() para aguardar tempo fixo (ideal evitar, mas às vezes necessário)
-   * - .invoke(), .trigger(), .should() para manipular e validar valores de campos
+    Função para cadastrar um cliente.
+    Utiliza:
+    - cy.get() para selecionar elementos na tela
+    - cy.contains() para buscar elemento que contenha texto específico
+    - .click() para clicar em botões ou abas
+    - .type() para preencher campos de texto
+    - cy.wait() para aguardar tempo fixo
+    - .invoke(), .trigger(), .should() para manipular e validar valores de campos
    */
   function cadastroCliente() {
     cy.log(` CNPJ gerado: ${cnpjGerado}`);
@@ -101,7 +105,6 @@ describe("Cadastro de Cliente", () => {
     cy.get("#ContentPlaceHolder1_btEnviar").click();
 
     cy.get("#ajaxLoading", { timeout: 60000 }).should("not.be.visible");
-    cy.wait(4000);
   }
 
   /**
@@ -227,11 +230,11 @@ describe("Cadastro de Cliente", () => {
     );
   }
 
-  it("Fluxo completo de cadastro, busca, validação e edição de endereço de cliente com CNPJ dinâmico", () => {
+  it("Fluxo completo de cadastro, busca, validação e edição de endereço de cliente", () => {
     cy.log(" Iniciando cadastro do cliente");
     cadastroCliente();
 
-    cy.log(" Iniciando cadastro do endereço");
+    cy.log("Cadastro do endereço");
     cadastroEndereco();
 
     cy.log(" Buscando cliente pelo CNPJ");

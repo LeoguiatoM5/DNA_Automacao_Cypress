@@ -1,6 +1,3 @@
-import { faker } from "@faker-js/faker/locale/pt_BR";
-import { cnpj } from "cpf-cnpj-validator";
-
 const { registrarErrosJS } = require("../../pages/tratamentos/errosJS.js");
 const {
   validarCampoSemMascara,
@@ -26,20 +23,17 @@ describe("Fluxo após login válido", () => {
   });
 
   it("Cadastro Classe", () => {
-    const nomedivisao= "TESTEDNA"
-        
-    cy.get(':nth-child(4) > .sf-with-ul').click();
-    cy.contains("Classe").click();
-    cy.get('#ContentPlaceHolder1_btNovo').click();
-    cy.get('#ContentPlaceHolder1_txtCodigo').type ("123");
-    cy.get('#ContentPlaceHolder1_txtDescricao').type (nomedivisao);
-    cy.get(':nth-child(2) > .switch > .slider').click();
-    cy.get('#ContentPlaceHolder1_btSalvar').click();
-    cy.get('#ContentPlaceHolder1_TxtDesc').type(nomedivisao);
-    cy.get('#ContentPlaceHolder1_BtnProcurar').click();
-    cy.get('.gridRow > :nth-child(3)'). should ("contain.text",nomedivisao);
-      
+    const nomedivisao = "TESTEDNA";
 
-   
+    cy.get(":nth-child(4) > .sf-with-ul").click();
+    cy.contains("Classe").click();
+    cy.get("#ContentPlaceHolder1_btNovo").click();
+    cy.get("#ContentPlaceHolder1_txtCodigo").type("123");
+    cy.get("#ContentPlaceHolder1_txtDescricao").type(nomedivisao);
+    cy.get(":nth-child(2) > .switch > .slider").click();
+    cy.get("#ContentPlaceHolder1_btSalvar").click();
+    cy.get("#ContentPlaceHolder1_TxtDesc").type(nomedivisao);
+    cy.get("#ContentPlaceHolder1_BtnProcurar").click();
+    cy.get(".gridRow > :nth-child(3)").should("contain.text", nomedivisao);
   });
 });
