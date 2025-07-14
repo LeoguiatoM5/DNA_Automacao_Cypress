@@ -5,9 +5,9 @@
     "passes": 0,
     "pending": 0,
     "failures": 1,
-    "start": "2025-06-09T15:05:11.819Z",
-    "end": "2025-06-09T15:05:45.028Z",
-    "duration": 33209,
+    "start": "2025-07-03T14:00:04.013Z",
+    "end": "2025-07-03T14:00:28.574Z",
+    "duration": 24561,
     "testsRegistered": 1,
     "passPercent": 0,
     "pendingPercent": 0,
@@ -18,41 +18,41 @@
   },
   "results": [
     {
-      "uuid": "cc675fd6-3aed-4261-9ddb-c374d73b2b7f",
+      "uuid": "e536d967-fd97-472b-8443-8193e8eb0bdd",
       "title": "",
-      "fullFile": "cypress\\e2e\\fluxoExemploFalha.cy.js",
-      "file": "cypress\\e2e\\fluxoExemploFalha.cy.js",
+      "fullFile": "cypress\\e2e\\Teste Lentidão Libbs\\TesteLentidaoLibbsProd.cy.js",
+      "file": "cypress\\e2e\\Teste Lentidão Libbs\\TesteLentidaoLibbsProd.cy.js",
       "beforeHooks": [],
       "afterHooks": [],
       "tests": [],
       "suites": [
         {
-          "uuid": "6dc563e8-f5e3-4ff3-b5d3-9d75c8b8a573",
-          "title": "Cadastro de cliente e validação",
+          "uuid": "bdf03beb-f33e-44d4-a31a-f1116fba866d",
+          "title": "Teste de Lentidão Plataforma Libbs - Produção",
           "fullFile": "",
           "file": "",
           "beforeHooks": [],
           "afterHooks": [],
           "tests": [
             {
-              "title": "Fluxo completo de cadastro e validação",
-              "fullTitle": "Cadastro de cliente e validação Fluxo completo de cadastro e validação",
+              "title": "Teste de Lentidão - Produção",
+              "fullTitle": "Teste de Lentidão Plataforma Libbs - Produção Teste de Lentidão - Produção",
               "timedOut": null,
-              "duration": 33064,
+              "duration": 20554,
               "state": "failed",
               "speed": null,
               "pass": false,
               "fail": true,
               "pending": false,
               "context": null,
-              "code": "const cnpjBuscado = \"38797383000143\";\nconst nomeFantasia = \"TesteFantasia39\";\nconst razaoSocial = \"Teste39\";\nconst CEP = \"14340000\";\nconst bairro = \"centro\";\nconst logradouro = \"centro\";\nconst numeroLogradouro = \"10\";\n// Acessa a tela de cadastro de cliente\ncy.visit(\"https://homologacaoesp.interplayers.com.br/PRJ/Especialidades/Adm/admPdv.aspx\");\ncy.get(\"#nav > :nth-child(3) > .sf-with-ul\").click();\ncy.contains(\"Cadastro de Cliente\").click();\ncy.get(\"#ContentPlaceHolder1_btNovoPDV\").click();\n// Preenche dados do cliente\ncy.get(\"#ContentPlaceHolder1_trTipoDocumento\").contains(\"JURIDICA\").click();\ncy.get(\"#ContentPlaceHolder1_DDLTipoCli\").select(\"CLIENTE - Bayer\");\ncy.get(\"#ContentPlaceHolder1_PesRazaoSocial_Nome\").type(razaoSocial);\ncy.get(\"#ContentPlaceHolder1_PesCNPJ_CPF\").type(cnpjBuscado);\ncy.get(\"h1\").click();\ncy.get(\"#ContentPlaceHolder1_PopupCNPJ_ctl00_btCancelarPopup\").click();\ncy.get(\"#ContentPlaceHolder1_PesNomeFantasia\").should(\"be.visible\").invoke(\"val\", nomeFantasia).trigger(\"input\").trigger(\"change\").trigger(\"blur\").should(\"have.value\", nomeFantasia);\ncy.get(\"#ContentPlaceHolder1_ListSetorVenda\").select(\"454\");\ncy.get(\"#ContentPlaceHolder1_btnAddSetorVenda\").click();\n// Preenche endereço\ncy.get(\"#liAbaEndereco\").click();\ncy.get(\"#ContentPlaceHolder1_dlEndereco_EndCep_0\").type(CEP);\ncy.get(\"#ContentPlaceHolder1_dlEndereco_ddlEstados_0\").select(\"SP\");\ncy.get(\"#ContentPlaceHolder1_dlEndereco_idCidade_0\").select(\"Brodowski\");\ncy.get(\"#ContentPlaceHolder1_dlEndereco_EndBairro_0\").type(bairro);\ncy.get(\"#ContentPlaceHolder1_dlEndereco_EndLogradouro_0\").type(logradouro);\ncy.get(\"#ContentPlaceHolder1_dlEndereco_txtNrLogradouro_0\").type(numeroLogradouro);\ncy.get(\"#ContentPlaceHolder1_btEnviar\").click();\ncy.waitUntil(() => cy.get(\"body\").then($body => {\n  const isVisible = $body.find(\"#ajaxLoading\").is(\":visible\");\n  return !isVisible;\n}), {\n  timeout: 1000,\n  interval: 1000,\n  errorMsg: \"Falha: #ajaxLoading  Processo pode ter travado.\"\n});\ncy.get(\"#ContentPlaceHolder1_txtCPFCNPJ\").type(cnpjBuscado);\ncy.get(\"#ContentPlaceHolder1_BtnProcurar\").click();\ncy.waitUntil(() => cy.get(\"body\").then($body => {\n  const isVisible = $body.find(\"#ajaxLoading\").is(\":visible\");\n  return !isVisible;\n}), {\n  timeout: 20000,\n  interval: 1000,\n  errorMsg: \"Falha ao buscar cliente: #ajaxLoading não desapareceu.\"\n});\ncy.get(\".gridRow > :nth-child(3)\", {\n  timeout: 10000\n}).should(\"contain.text\", cnpjBuscado);\n// Valida os dados\ncy.get(\"#ContentPlaceHolder1_rptResultado_imgSelecionar_0\").click();\ncy.get(\"#ContentPlaceHolder1_PesCNPJ_CPF\", {\n  timeout: 10000\n}).should(\"be.visible\");\ncy.get(\"#ContentPlaceHolder1_PesCNPJ_CPF\").invoke(\"val\").then(val => {\n  expect(val.replace(/\\D/g, \"\")).to.equal(cnpjBuscado);\n});\ncy.get(\"#ContentPlaceHolder1_PesRazaoSocial_Nome\").invoke(\"val\").then(val => {\n  expect(val.toLowerCase()).to.equal(razaoSocial.toLowerCase());\n});\ncy.get(\"#ContentPlaceHolder1_PesNomeFantasia\").invoke(\"val\").then(val => {\n  expect(val.toLowerCase()).to.equal(nomeFantasia.toLowerCase());\n});\ncy.get(\"#ContentPlaceHolder1_ListSetorSelecionados > option\").should(\"contain.text\", \"(CARDIO) CAR005 Carlos Giorgenon\");\ncy.get(\"#liAbaEndereco\").click();\ncy.get(\"#ContentPlaceHolder1_dlEndereco_EndCep_0\").invoke(\"val\").then(val => {\n  expect(val.replace(/\\D/g, \"\")).to.equal(CEP);\n});\ncy.get(\"#ContentPlaceHolder1_dlEndereco_ddlEstados_0\").find(\":selected\").should(\"contain.text\", \"SP\");\ncy.get(\"#ContentPlaceHolder1_dlEndereco_idCidade_0\").find(\":selected\").should(\"contain.text\", \"Brodowski\");\ncy.get(\"#ContentPlaceHolder1_dlEndereco_EndBairro_0\").invoke(\"val\").then(val => {\n  expect(val.toLowerCase()).to.equal(bairro.toLowerCase());\n});\ncy.get(\"#ContentPlaceHolder1_dlEndereco_EndLogradouro_0\").invoke(\"val\").then(val => {\n  expect(val.toLowerCase()).to.equal(logradouro.toLowerCase());\n});\ncy.get(\"#ContentPlaceHolder1_dlEndereco_txtNrLogradouro_0\").should(\"have.value\", numeroLogradouro);",
+              "code": "cy.visit(\"https://libbs.entiretp.com.br/Default.aspx\", {\n  timeout: 120000\n});\ncy.get(\":nth-child(7) > .sf-with-ul\", {\n  timeout: 15000\n}).should(\"be.visible\");\ncy.get(\":nth-child(7) > .sf-with-ul\").click();\ncy.contains(\"Listar Pedidos\").should(\"be.visible\").click();\n// Captura o momento antes da navegação\nconst start = Date.now();\n// Aguarda o elemento final que comprova carregamento\ncy.get(\"#lblTituloPagina\", {\n  timeout: 60000\n}).should(\"be.visible\").then(() => {\n  const end = Date.now();\n  const elapsed = (end - start) / 1000;\n  cy.log(` Tempo até carregar Listar Pedidos: ${elapsed.toFixed(2)}s`);\n  if (elapsed > 8) {\n    throw new Error(` BUG: Demorou ${elapsed.toFixed(2)}s para carregar!`);\n  }\n});",
               "err": {
-                "message": "Error: Falha: #ajaxLoading  Processo pode ter travado.",
-                "estack": "Error: Falha: #ajaxLoading  Processo pode ter travado.\n    at Context.check (https://homologacaoesp.interplayers.com.br/__cypress/tests?p=cypress\\support\\e2e.js:107:13)\n    at getRet (https://homologacaoesp.interplayers.com.br/__cypress/runner/cypress_runner.js:119619:20)\n    at tryCatcher (https://homologacaoesp.interplayers.com.br/__cypress/runner/cypress_runner.js:1777:23)\n    at Promise.attempt.Promise.try (https://homologacaoesp.interplayers.com.br/__cypress/runner/cypress_runner.js:4285:29)\n    at Context.thenFn (https://homologacaoesp.interplayers.com.br/__cypress/runner/cypress_runner.js:119630:66)\n    at Context.then (https://homologacaoesp.interplayers.com.br/__cypress/runner/cypress_runner.js:119881:21)\n    at wrapped (https://homologacaoesp.interplayers.com.br/__cypress/runner/cypress_runner.js:140158:19)\n    at <unknown> (https://homologacaoesp.interplayers.com.br/__cypress/runner/cypress_runner.js:146103:15)\n    at tryCatcher (https://homologacaoesp.interplayers.com.br/__cypress/runner/cypress_runner.js:1777:23)",
+                "message": "CypressError: Timed out retrying after 4050ms: `cy.click()` failed because this element is not visible:\n\n`<a href=\"https://libbs.entiretp.com.br//Pedido/pedListagemPedidos.aspX?cod=CE9AFB1E-01FE-4955-A3A4-0FF36E7CDF2B|19\">Listar ...</a>`\n\nThis element `<a>` is not visible because its parent `<ul>` has CSS property: `display: none`\n\nFix this problem, or use `{force: true}` to disable error checking.\n\nhttps://on.cypress.io/element-cannot-be-interacted-with",
+                "estack": "CypressError: Timed out retrying after 4050ms: `cy.click()` failed because this element is not visible:\n\n`<a href=\"https://libbs.entiretp.com.br//Pedido/pedListagemPedidos.aspX?cod=CE9AFB1E-01FE-4955-A3A4-0FF36E7CDF2B|19\">Listar ...</a>`\n\nThis element `<a>` is not visible because its parent `<ul>` has CSS property: `display: none`\n\nFix this problem, or use `{force: true}` to disable error checking.\n\nhttps://on.cypress.io/element-cannot-be-interacted-with\n    at runVisibilityCheck (https://libbs.entiretp.com.br/__cypress/runner/cypress_runner.js:147004:58)\n    at Object.isStrictlyVisible (https://libbs.entiretp.com.br/__cypress/runner/cypress_runner.js:147018:10)\n    at runAllChecks (https://libbs.entiretp.com.br/__cypress/runner/cypress_runner.js:113449:26)\n    at retryActionability (https://libbs.entiretp.com.br/__cypress/runner/cypress_runner.js:113517:16)\n    at tryCatcher (https://libbs.entiretp.com.br/__cypress/runner/cypress_runner.js:1777:23)\n    at Promise.attempt.Promise.try (https://libbs.entiretp.com.br/__cypress/runner/cypress_runner.js:4285:29)\n    at whenStable (https://libbs.entiretp.com.br/__cypress/runner/cypress_runner.js:145831:68)\n    at <unknown> (https://libbs.entiretp.com.br/__cypress/runner/cypress_runner.js:145772:14)\n    at tryCatcher (https://libbs.entiretp.com.br/__cypress/runner/cypress_runner.js:1777:23)\n    at Promise._settlePromiseFromHandler (https://libbs.entiretp.com.br/__cypress/runner/cypress_runner.js:1489:31)\n    at Promise._settlePromise (https://libbs.entiretp.com.br/__cypress/runner/cypress_runner.js:1546:18)\n    at Promise._settlePromise0 (https://libbs.entiretp.com.br/__cypress/runner/cypress_runner.js:1591:10)\n    at Promise._settlePromises (https://libbs.entiretp.com.br/__cypress/runner/cypress_runner.js:1671:18)\n    at Promise._fulfill (https://libbs.entiretp.com.br/__cypress/runner/cypress_runner.js:1615:18)\n    at <unknown> (https://libbs.entiretp.com.br/__cypress/runner/cypress_runner.js:5420:46)",
                 "diff": null
               },
-              "uuid": "02cc8873-1b41-4092-9af1-11137700fc6d",
-              "parentUUID": "6dc563e8-f5e3-4ff3-b5d3-9d75c8b8a573",
+              "uuid": "24c92685-64ef-45de-80ce-4b2a21af697c",
+              "parentUUID": "bdf03beb-f33e-44d4-a31a-f1116fba866d",
               "isHook": false,
               "skipped": false
             }
@@ -60,11 +60,11 @@
           "suites": [],
           "passes": [],
           "failures": [
-            "02cc8873-1b41-4092-9af1-11137700fc6d"
+            "24c92685-64ef-45de-80ce-4b2a21af697c"
           ],
           "pending": [],
           "skipped": [],
-          "duration": 33064,
+          "duration": 20554,
           "root": false,
           "rootEmpty": false,
           "_timeout": 2000
