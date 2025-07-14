@@ -5,9 +5,9 @@
     "passes": 0,
     "pending": 0,
     "failures": 1,
-    "start": "2025-07-03T14:00:04.013Z",
-    "end": "2025-07-03T14:00:28.574Z",
-    "duration": 24561,
+    "start": "2025-07-14T20:12:03.090Z",
+    "end": "2025-07-14T20:12:15.968Z",
+    "duration": 12878,
     "testsRegistered": 1,
     "passPercent": 0,
     "pendingPercent": 0,
@@ -18,41 +18,41 @@
   },
   "results": [
     {
-      "uuid": "e536d967-fd97-472b-8443-8193e8eb0bdd",
+      "uuid": "bc3ec073-9193-4807-9d4f-6618bb086822",
       "title": "",
-      "fullFile": "cypress\\e2e\\Teste Lentidão Libbs\\TesteLentidaoLibbsProd.cy.js",
-      "file": "cypress\\e2e\\Teste Lentidão Libbs\\TesteLentidaoLibbsProd.cy.js",
+      "fullFile": "cypress\\e2e\\Leonardo Guiato\\CadastroDeCliente.cy.js",
+      "file": "cypress\\e2e\\Leonardo Guiato\\CadastroDeCliente.cy.js",
       "beforeHooks": [],
       "afterHooks": [],
       "tests": [],
       "suites": [
         {
-          "uuid": "bdf03beb-f33e-44d4-a31a-f1116fba866d",
-          "title": "Teste de Lentidão Plataforma Libbs - Produção",
+          "uuid": "17192e35-32cd-4d40-888a-8c6dd874faf5",
+          "title": "Cadastro de Cliente",
           "fullFile": "",
           "file": "",
           "beforeHooks": [],
           "afterHooks": [],
           "tests": [
             {
-              "title": "Teste de Lentidão - Produção",
-              "fullTitle": "Teste de Lentidão Plataforma Libbs - Produção Teste de Lentidão - Produção",
+              "title": "Fluxo completo de cadastro, busca, validação e edição de endereço de cliente",
+              "fullTitle": "Cadastro de Cliente Fluxo completo de cadastro, busca, validação e edição de endereço de cliente",
               "timedOut": null,
-              "duration": 20554,
+              "duration": 12814,
               "state": "failed",
               "speed": null,
               "pass": false,
               "fail": true,
               "pending": false,
               "context": null,
-              "code": "cy.visit(\"https://libbs.entiretp.com.br/Default.aspx\", {\n  timeout: 120000\n});\ncy.get(\":nth-child(7) > .sf-with-ul\", {\n  timeout: 15000\n}).should(\"be.visible\");\ncy.get(\":nth-child(7) > .sf-with-ul\").click();\ncy.contains(\"Listar Pedidos\").should(\"be.visible\").click();\n// Captura o momento antes da navegação\nconst start = Date.now();\n// Aguarda o elemento final que comprova carregamento\ncy.get(\"#lblTituloPagina\", {\n  timeout: 60000\n}).should(\"be.visible\").then(() => {\n  const end = Date.now();\n  const elapsed = (end - start) / 1000;\n  cy.log(` Tempo até carregar Listar Pedidos: ${elapsed.toFixed(2)}s`);\n  if (elapsed > 8) {\n    throw new Error(` BUG: Demorou ${elapsed.toFixed(2)}s para carregar!`);\n  }\n});",
+              "code": "cy.log(\" Iniciando cadastro do cliente\");\ncadastroCliente();\ncy.log(\"Cadastro do endereço\");\ncadastroEndereco();\ncy.log(\" Buscando cliente pelo CNPJ\");\nbuscarClientePorCNPJ();\ncy.log(\" Validando cadastro do cliente\");\nvalidacaoCadastro();\ncy.log(\" Editando endereço do cliente\");\nedicaoEndereco();\ncy.log(\" Validando endereço editado\");\nvalidarEnderecoEditado();",
               "err": {
-                "message": "CypressError: Timed out retrying after 4050ms: `cy.click()` failed because this element is not visible:\n\n`<a href=\"https://libbs.entiretp.com.br//Pedido/pedListagemPedidos.aspX?cod=CE9AFB1E-01FE-4955-A3A4-0FF36E7CDF2B|19\">Listar ...</a>`\n\nThis element `<a>` is not visible because its parent `<ul>` has CSS property: `display: none`\n\nFix this problem, or use `{force: true}` to disable error checking.\n\nhttps://on.cypress.io/element-cannot-be-interacted-with",
-                "estack": "CypressError: Timed out retrying after 4050ms: `cy.click()` failed because this element is not visible:\n\n`<a href=\"https://libbs.entiretp.com.br//Pedido/pedListagemPedidos.aspX?cod=CE9AFB1E-01FE-4955-A3A4-0FF36E7CDF2B|19\">Listar ...</a>`\n\nThis element `<a>` is not visible because its parent `<ul>` has CSS property: `display: none`\n\nFix this problem, or use `{force: true}` to disable error checking.\n\nhttps://on.cypress.io/element-cannot-be-interacted-with\n    at runVisibilityCheck (https://libbs.entiretp.com.br/__cypress/runner/cypress_runner.js:147004:58)\n    at Object.isStrictlyVisible (https://libbs.entiretp.com.br/__cypress/runner/cypress_runner.js:147018:10)\n    at runAllChecks (https://libbs.entiretp.com.br/__cypress/runner/cypress_runner.js:113449:26)\n    at retryActionability (https://libbs.entiretp.com.br/__cypress/runner/cypress_runner.js:113517:16)\n    at tryCatcher (https://libbs.entiretp.com.br/__cypress/runner/cypress_runner.js:1777:23)\n    at Promise.attempt.Promise.try (https://libbs.entiretp.com.br/__cypress/runner/cypress_runner.js:4285:29)\n    at whenStable (https://libbs.entiretp.com.br/__cypress/runner/cypress_runner.js:145831:68)\n    at <unknown> (https://libbs.entiretp.com.br/__cypress/runner/cypress_runner.js:145772:14)\n    at tryCatcher (https://libbs.entiretp.com.br/__cypress/runner/cypress_runner.js:1777:23)\n    at Promise._settlePromiseFromHandler (https://libbs.entiretp.com.br/__cypress/runner/cypress_runner.js:1489:31)\n    at Promise._settlePromise (https://libbs.entiretp.com.br/__cypress/runner/cypress_runner.js:1546:18)\n    at Promise._settlePromise0 (https://libbs.entiretp.com.br/__cypress/runner/cypress_runner.js:1591:10)\n    at Promise._settlePromises (https://libbs.entiretp.com.br/__cypress/runner/cypress_runner.js:1671:18)\n    at Promise._fulfill (https://libbs.entiretp.com.br/__cypress/runner/cypress_runner.js:1615:18)\n    at <unknown> (https://libbs.entiretp.com.br/__cypress/runner/cypress_runner.js:5420:46)",
+                "message": "AssertionError: Timed out retrying after 4000ms: Expected to find element: `#nav > :nth-child(3) > .sf-with-ul`, but never found it.",
+                "estack": "AssertionError: Timed out retrying after 4000ms: Expected to find element: `#nav > :nth-child(3) > .sf-with-ul`, but never found it.\n    at cadastroCliente (https://homologacaoesp.interplayers.com.br/__cypress/tests?p=cypress\\e2e\\Leonardo%20Guiato\\CadastroDeCliente.cy.js:2476:8)\n    at Context.eval (https://homologacaoesp.interplayers.com.br/__cypress/tests?p=cypress\\e2e\\Leonardo%20Guiato\\CadastroDeCliente.cy.js:2601:5)",
                 "diff": null
               },
-              "uuid": "24c92685-64ef-45de-80ce-4b2a21af697c",
-              "parentUUID": "bdf03beb-f33e-44d4-a31a-f1116fba866d",
+              "uuid": "f4fadf36-b5ca-4d4f-821a-53fcbb9fbe46",
+              "parentUUID": "17192e35-32cd-4d40-888a-8c6dd874faf5",
               "isHook": false,
               "skipped": false
             }
@@ -60,11 +60,11 @@
           "suites": [],
           "passes": [],
           "failures": [
-            "24c92685-64ef-45de-80ce-4b2a21af697c"
+            "f4fadf36-b5ca-4d4f-821a-53fcbb9fbe46"
           ],
           "pending": [],
           "skipped": [],
-          "duration": 20554,
+          "duration": 12814,
           "root": false,
           "rootEmpty": false,
           "_timeout": 2000
