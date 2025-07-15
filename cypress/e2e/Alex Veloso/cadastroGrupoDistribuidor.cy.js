@@ -1,6 +1,3 @@
-import { faker } from "@faker-js/faker/locale/pt_BR";
-import { cnpj } from "cpf-cnpj-validator";
-
 const { registrarErrosJS } = require("../../pages/tratamentos/errosJS.js");
 const {
   validarCampoSemMascara,

@@ -1,16 +1,10 @@
-import { faker } from "@faker-js/faker/locale/pt_BR";
-import { cnpj } from "cpf-cnpj-validator";
-
 const { registrarErrosJS } = require("../../pages/tratamentos/errosJS.js");
 registrarErrosJS();
 
 describe("CAdastro de novo Distribuidor", () => {
   //Variáveis
-  const cnpjDistribuidor = cnpj.generate();
-  //const cnpjDistribuidor = "01448559000141";
-  const nomeFantasiaDistribuidor = faker.company.name();
-  const razaoSocialDistribuidor = faker.company.name();
-  //const nomeFantasiaDistribuidor = "Distribuidor 4 DNA";
+  const cnpjDistribuidor = "01448559000141";
+  const nomeDistribuidor = "Distribuidor 4 DNA";
   const logradouro = "Rua TESTE";
   const bairro = "Centro";
   const cep = "14070080"
@@ -33,8 +27,8 @@ describe("CAdastro de novo Distribuidor", () => {
     cy.contains("Cadastro de Distribuidor").click();
     cy.get('#ContentPlaceHolder1_btNovoMenu').click();
     cy.get('#ContentPlaceHolder1_PesCNPJ_CPF').type(cnpjDistribuidor);
-    cy.get('#ContentPlaceHolder1_PesNomeFantasia').type(nomeFantasiaDistribuidor);
-    cy.get('#ContentPlaceHolder1_PesRazaoSocial_Nome').type(razaoSocialDistribuidor);
+    cy.get('#ContentPlaceHolder1_PesNomeFantasia').type(nomeDistribuidor);
+    cy.get('#ContentPlaceHolder1_PesRazaoSocial_Nome').type(nomeDistribuidor);
     cy.get(':nth-child(1) > :nth-child(6) > .auto > :nth-child(2) > .slider').click();
   }
 
@@ -64,8 +58,8 @@ describe("CAdastro de novo Distribuidor", () => {
 
   function buscaNovoDisatribuidor() {
     cy.get('#ContentPlaceHolder1_txtCPFCNPJ').type(cnpjDistribuidor)
-    cy.get('#ContentPlaceHolder1_BtnProcurar').click(); 
-    cy.get('tbody > :nth-child(2) > :nth-child(3)'). should ("contain.text",cnpjDistribuidor);    
+    cy.get('#ContentPlaceHolder1_BtnProcurar').click();
+    cy.get('.gridRow > :nth-child(4)'). should ("contain.text",nomeDistribuidor);
   }
 
   it ("Fluxo de Cadastro de Novo Distribuidor", () => {    

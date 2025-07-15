@@ -1,7 +1,7 @@
 const { registrarErrosJS } = require("../../pages/tratamentos/errosJS.js");
 registrarErrosJS();
 
-describe("CAdastro de novo Distribuidor", () => {
+describe("Cadastro de novo Distribuidor", () => {
   //Variáveis
   const cnpjDistribuidor = "00625540000160";
   const nomeDistribuidor = "Distribuidor Erro DNA";

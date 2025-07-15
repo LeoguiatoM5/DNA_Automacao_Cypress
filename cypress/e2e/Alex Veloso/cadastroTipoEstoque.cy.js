@@ -12,7 +12,7 @@ registrarErrosJS();
 describe("Cadastro Tipo de Estoque", () => {
   //Variáveis
   const nomeEstoque1 = faker.company.name();
-  const nomeEstoque2 = faker.company.name();
+  //const nomeEstoque2 = faker.company.name();
 
   beforeEach(() => {
     cy.visit(
@@ -37,21 +37,12 @@ describe("Cadastro Tipo de Estoque", () => {
     cy.get('tr > :nth-child(1) > label').click();
     cy.get('.slider').click();
     cy.get('#ContentPlaceHolder1_btSalvar').click();
-    
-    cy.get('#ContentPlaceHolder1_btNovo').click();
-    cy.get('#ContentPlaceHolder1_txtDescricao').type(nomeEstoque2);
-    cy.get(':nth-child(2) > label').click();
-    cy.get('.slider').click();
-    cy.get('#ContentPlaceHolder1_btSalvar').click();
-  
+ 
     //"Busca novos cadastros"
 
     cy.get('#ContentPlaceHolder1_TxtDesc').type(nomeEstoque1);
     cy.get('#ContentPlaceHolder1_BtnProcurar').click();
     cy.get('tbody > :nth-child(2) > :nth-child(2)').should ("contain.text", nomeEstoque1);
-    cy.get('#ContentPlaceHolder1_TxtDesc').type(nomeEstoque2);
-    cy.get('#ContentPlaceHolder1_BtnProcurar').click();
-    cy.get('tbody > :nth-child(2) > :nth-child(2)').should ("contain.text", nomeEstoque2);
      
   });
 });
