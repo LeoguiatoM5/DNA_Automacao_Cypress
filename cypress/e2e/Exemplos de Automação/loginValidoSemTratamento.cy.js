@@ -29,7 +29,6 @@ describe("Cadastro de cliente e validação", () => {
     const logradouro = "centro";
     const numeroLogradouro = "10";
 
-    // Acesso à tela de cadastro
     cy.visit(
       "https://homologacaoesp.interplayers.com.br/PRJ/Especialidades/Adm/admPdv.aspx"
     );
