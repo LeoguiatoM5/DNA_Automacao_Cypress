@@ -2,14 +2,14 @@
   "stats": {
     "suites": 1,
     "tests": 1,
-    "passes": 0,
+    "passes": 1,
     "pending": 0,
-    "failures": 1,
-    "start": "2025-07-14T20:12:03.090Z",
-    "end": "2025-07-14T20:12:15.968Z",
-    "duration": 12878,
+    "failures": 0,
+    "start": "2025-07-16T11:57:41.697Z",
+    "end": "2025-07-16T12:00:18.650Z",
+    "duration": 156953,
     "testsRegistered": 1,
-    "passPercent": 0,
+    "passPercent": 100,
     "pendingPercent": 0,
     "other": 0,
     "hasOther": false,
@@ -18,7 +18,7 @@
   },
   "results": [
     {
-      "uuid": "bc3ec073-9193-4807-9d4f-6618bb086822",
+      "uuid": "5efea807-1de9-41f5-bfbb-28000c4d7b92",
       "title": "",
       "fullFile": "cypress\\e2e\\Leonardo Guiato\\CadastroDeCliente.cy.js",
       "file": "cypress\\e2e\\Leonardo Guiato\\CadastroDeCliente.cy.js",
@@ -27,7 +27,7 @@
       "tests": [],
       "suites": [
         {
-          "uuid": "17192e35-32cd-4d40-888a-8c6dd874faf5",
+          "uuid": "afd87e12-5fee-4f66-a100-a1ec68951a37",
           "title": "Cadastro de Cliente",
           "fullFile": "",
           "file": "",
@@ -38,33 +38,29 @@
               "title": "Fluxo completo de cadastro, busca, validação e edição de endereço de cliente",
               "fullTitle": "Cadastro de Cliente Fluxo completo de cadastro, busca, validação e edição de endereço de cliente",
               "timedOut": null,
-              "duration": 12814,
-              "state": "failed",
-              "speed": null,
-              "pass": false,
-              "fail": true,
+              "duration": 156595,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
               "pending": false,
               "context": null,
               "code": "cy.log(\" Iniciando cadastro do cliente\");\ncadastroCliente();\ncy.log(\"Cadastro do endereço\");\ncadastroEndereco();\ncy.log(\" Buscando cliente pelo CNPJ\");\nbuscarClientePorCNPJ();\ncy.log(\" Validando cadastro do cliente\");\nvalidacaoCadastro();\ncy.log(\" Editando endereço do cliente\");\nedicaoEndereco();\ncy.log(\" Validando endereço editado\");\nvalidarEnderecoEditado();",
-              "err": {
-                "message": "AssertionError: Timed out retrying after 4000ms: Expected to find element: `#nav > :nth-child(3) > .sf-with-ul`, but never found it.",
-                "estack": "AssertionError: Timed out retrying after 4000ms: Expected to find element: `#nav > :nth-child(3) > .sf-with-ul`, but never found it.\n    at cadastroCliente (https://homologacaoesp.interplayers.com.br/__cypress/tests?p=cypress\\e2e\\Leonardo%20Guiato\\CadastroDeCliente.cy.js:2476:8)\n    at Context.eval (https://homologacaoesp.interplayers.com.br/__cypress/tests?p=cypress\\e2e\\Leonardo%20Guiato\\CadastroDeCliente.cy.js:2601:5)",
-                "diff": null
-              },
-              "uuid": "f4fadf36-b5ca-4d4f-821a-53fcbb9fbe46",
-              "parentUUID": "17192e35-32cd-4d40-888a-8c6dd874faf5",
+              "err": {},
+              "uuid": "2a5ee079-af1a-49d5-8a11-48a0db7f24b0",
+              "parentUUID": "afd87e12-5fee-4f66-a100-a1ec68951a37",
               "isHook": false,
               "skipped": false
             }
           ],
           "suites": [],
-          "passes": [],
-          "failures": [
-            "f4fadf36-b5ca-4d4f-821a-53fcbb9fbe46"
+          "passes": [
+            "2a5ee079-af1a-49d5-8a11-48a0db7f24b0"
           ],
+          "failures": [],
           "pending": [],
           "skipped": [],
-          "duration": 12814,
+          "duration": 156595,
           "root": false,
           "rootEmpty": false,
           "_timeout": 2000
