@@ -1,3 +1,5 @@
+import { faker } from "@faker-js/faker/locale/pt_BR";
+
 const { registrarErrosJS } = require("../../pages/tratamentos/errosJS.js");
 const {
   validarCampoSemMascara,
@@ -8,7 +10,7 @@ registrarErrosJS();
 
 describe("Cadastro Grupo Distribuidor", () => {
   //Variáveis
-const nomeGrupo = "Grupo DNA";
+const nomeGrupo = faker.company.name();
 
   beforeEach(() => {
     cy.visit(
