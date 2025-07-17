@@ -55,7 +55,7 @@ describe("Cadastro de novo Distribuidor", () => {
     cy.get('#ContentPlaceHolder1_dlEndereco_EndCep_0').type(cep);
     cy.get('td > .panel > :nth-child(6) > .auto > .switch > .slider').click();
     */
-    cy.get('#ContentPlaceHolder1_btEnviar').click(); 
+    cy.get('#ContentPlaceHolder1_btEnviar', {timeout:4000}).click(); 
   }
 
   function buscaNovoDisatribuidor() {
@@ -76,6 +76,8 @@ describe("Cadastro de novo Distribuidor", () => {
 
     cy.log("Endereço distribuidor");
     enderecoNovoDistribuidor();
+
+    buscaNovoDisatribuidor();
 
     
 
