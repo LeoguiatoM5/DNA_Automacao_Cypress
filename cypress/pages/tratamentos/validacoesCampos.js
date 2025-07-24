@@ -20,7 +20,24 @@ function validarCampoSemCase(seletor, valorEsperado) {
     });
 }
 
+function validarTextoVisivel(seletor, textoEsperado) {
+  if (typeof textoEsperado !== "string") {
+    throw new Error("O textoEsperado deve ser uma string.");
+  }
+
+  cy.get(seletor)
+    .should("exist")
+    .should("be.visible")
+    .invoke("text")
+    .then((textoObtido) => {
+      expect(textoObtido.trim().toLowerCase()).to.eq(
+        textoEsperado.trim().toLowerCase()
+      );
+    });
+}
+
 module.exports = {
   validarCampoSemMascara,
   validarCampoSemCase,
+  validarTextoVisivel,
 };
