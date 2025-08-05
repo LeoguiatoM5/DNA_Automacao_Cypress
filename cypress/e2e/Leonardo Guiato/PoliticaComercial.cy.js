@@ -1,7 +1,7 @@
 import { faker } from "@faker-js/faker/locale/pt_BR";
 import { cnpj } from "cpf-cnpj-validator";
 
-Cypress.on("uncaught:exception", () => false); // Ignora JS errors da app
+Cypress.on("uncaught:exception", () => false);
 
 const {
   validarCampoSemMascara,
@@ -123,7 +123,6 @@ describe("Politica Comercial e validação", () => {
   }
 
   function validarPoliticaCadastrada() {
-    // Aguarda o redirecionamento para a tela de listagem após salvar
     cy.location("pathname", { timeout: 10000 }).should(
       "include",
       "PoliticaComercial_Lista.aspx"

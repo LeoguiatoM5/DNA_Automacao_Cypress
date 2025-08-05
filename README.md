@@ -126,4 +126,4 @@ cy.should()         → Faz asserções (testes)
 ---
 
 npx cypress run --spec "cypress/e2e/Leonardo Guiato/CadastroDeCliente.cy.js"
-npx cypress run --spec "cypress/e2e/Leonardo Guiato/PoliticaComercial.cy.js" --browser chrome
+npx cypress run --spec "cypress/e2e/Teste Bayer/TesteCargaExcluida.cy.js" --browser chrome
