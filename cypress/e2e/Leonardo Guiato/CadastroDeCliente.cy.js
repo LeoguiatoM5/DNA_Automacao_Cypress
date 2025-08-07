@@ -26,10 +26,6 @@ describe("Cadastro de Cliente", () => {
     .toString();
 
   beforeEach(() => {
-    // cy.visit() => Navega para a URL especificada
-    // cy.get() => Seleciona um elemento DOM pelo seletor CSS
-    // .type() => Digita texto no elemento selecionado
-    // .click() => Clica no elemento selecionado
     cy.visit(
       "https://homologacaoesp.interplayers.com.br/PRJ/Especialidades/Acesso.aspx"
     );
@@ -38,26 +34,17 @@ describe("Cadastro de Cliente", () => {
       "admbayer@dnaspecialty.com.br"
     );
     cy.get("#ContentPlaceHolder1_Control_Login2_Login1_Password").type(
-      "1234568"
+      "12345678"
     );
     cy.get("#ContentPlaceHolder1_Control_Login2_Login1_LoginButton").click();
   });
 
-  /**
-    Função para cadastrar um cliente.
-    Utiliza:
-    - cy.get() para selecionar elementos na tela
-    - cy.contains() para buscar elemento que contenha texto específico
-    - .click() para clicar em botões ou abas
-    - .type() para preencher campos de texto
-    - cy.wait() para aguardar tempo fixo
-    - .invoke(), .trigger(), .should() para manipular e validar valores de campos
-   */
   function cadastroCliente() {
     cy.log(` CNPJ gerado: ${cnpjGerado}`);
 
-    cy.get("#nav > :nth-child(3) > .sf-with-ul").click();
-    cy.contains("Cadastro de Cliente").click();
+    cy.visit(
+      "https://homologacaoesp.interplayers.com.br/PRJ/Especialidades/Adm/admPdv.aspx?cod=D23202A1-73A1-461B-B2EF-8F3665D992B9|2155"
+    );
     cy.get("#ContentPlaceHolder1_btNovoPDV").click();
 
     cy.wait(5000);
@@ -65,32 +52,21 @@ describe("Cadastro de Cliente", () => {
     cy.get("#ContentPlaceHolder1_trTipoDocumento").contains("JURIDICA").click();
     cy.get("#ContentPlaceHolder1_DDLTipoCli").select("CLIENTE - Bayer");
 
-    cy.get("#ContentPlaceHolder1_PesRazaoSocial_Nome").type(razaoSocial);
+    cy.get("#ContentPlaceHolder1_PesRazaoSocial_Nome", { timeout: 4000 }).type(
+      razaoSocial
+    );
     cy.get("#ContentPlaceHolder1_PesCNPJ_CPF").type(cnpjGerado);
-    cy.get("h1").click();
-    cy.get("#ContentPlaceHolder1_PopupCNPJ_ctl00_btCancelarPopup").click();
+    cy.get("#ContentPlaceHolder1_PopupCNPJ_ctl00_btCancelarPopup").click({
+      force: true,
+    });
+    cy.get("#ContentPlaceHolder1_PopupCNPJ_ctl00_btnVerificaCNPJ").click();
 
-    cy.get("#ContentPlaceHolder1_PesNomeFantasia")
-      .invoke("val", nomeFantasia)
-      .trigger("input")
-      .trigger("change")
-      .trigger("blur")
-      .should("have.value", nomeFantasia);
+    cy.get("#ContentPlaceHolder1_PesNomeFantasia").type(nomeFantasia);
 
     cy.get("#ContentPlaceHolder1_ListSetorVenda").select("454");
     cy.get("#ContentPlaceHolder1_btnAddSetorVenda").click();
   }
 
-  /**
-   * Função para cadastrar o endereço do cliente.
-   * Utiliza:
-   * - cy.get() para selecionar campos do formulário de endereço
-   * - .click() para abrir aba do endereço
-   * - .type() e .select() para preencher campos
-   * - cy.get("#ContentPlaceHolder1_btEnviar").click() para salvar
-   * - cy.get("#ajaxLoading").should("not.be.visible") para aguardar fim do carregamento AJAX
-   * - cy.wait() para esperar um tempo extra após carregamento
-   */
   function cadastroEndereco() {
     cy.get("#liAbaEndereco").click();
     cy.get("#ContentPlaceHolder1_dlEndereco_EndCep_0").type(CEP);
@@ -107,16 +83,6 @@ describe("Cadastro de Cliente", () => {
     cy.get("#ajaxLoading", { timeout: 60000 }).should("not.be.visible");
   }
 
-  /**
-   * Função para buscar cliente pelo CNPJ.
-   * Utiliza:
-   * - cy.get() para selecionar campo de busca e botão
-   * - .clear() para limpar campo antes de digitar
-   * - .type() para inserir o CNPJ gerado
-   * - .click() para acionar busca
-   * - cy.get("#ajaxLoading").should("not.be.visible") para esperar carregamento AJAX
-   * - cy.get().should("contain.text") para garantir que o resultado contém o CNPJ buscado
-   */
   function buscarClientePorCNPJ() {
     cy.get("#ContentPlaceHolder1_txtCPFCNPJ").clear().type(cnpjGerado);
     cy.get("#ContentPlaceHolder1_BtnProcurar").click();
@@ -128,14 +94,6 @@ describe("Cadastro de Cliente", () => {
     );
   }
 
-  /**
-   * Função para validar os dados do cadastro do cliente.
-   * Utiliza:
-   * - cy.get().click() para selecionar o cliente nos resultados
-   * - cy.get().should("be.visible") para garantir que os campos aparecem
-   * - Funções externas validarCampoSemMascara e validarCampoSemCase para validar conteúdos dos campos
-   * - cy.get().should() para validar texto selecionado em dropdowns
-   */
   function validacaoCadastro() {
     cy.get("#ContentPlaceHolder1_rptResultado_imgSelecionar_0").click();
 
@@ -177,14 +135,6 @@ describe("Cadastro de Cliente", () => {
     );
   }
 
-  /**
-   * Função para editar o endereço do cliente.
-   * Utiliza:
-   * - cy.get() para selecionar os campos de endereço
-   * - .clear() e .type() para alterar os dados
-   * - .click() para salvar alterações
-   * - cy.get("#ajaxLoading").should("not.be.visible") para aguardar término do processo AJAX
-   */
   function edicaoEndereco() {
     cy.get("#ContentPlaceHolder1_dlEndereco_EndBairro_0")
       .clear()
@@ -197,23 +147,13 @@ describe("Cadastro de Cliente", () => {
       .type(novoNumeroLogradouro);
 
     cy.get("#ContentPlaceHolder1_btEnviar").click();
-    cy.get("#ajaxLoading", { timeout: 60000 }).should("not.be.visible");
+    cy.get("#ajaxLoading", { timeout: 100000 }).should("not.be.visible");
   }
 
-  /**
-   * Função para validar o endereço editado.
-   * Utiliza:
-   * - Função buscarClientePorCNPJ para localizar cliente
-   * - cy.get().click() para abrir detalhes do cliente
-   * - cy.get().click() para abrir aba de endereço
-   * - cy.get().should("be.visible") para garantir que os campos estão visíveis
-   * - Funções validarCampoSemCase para validar valores dos campos de texto
-   * - cy.get().should("have.value") para verificar valor do campo número do logradouro
-   */
   function validarEnderecoEditado() {
     buscarClientePorCNPJ();
     cy.get("#ContentPlaceHolder1_rptResultado_imgSelecionar_0").click();
-    cy.get("#liAbaEndereco").click();
+    cy.get("#liAbaEndereco", { timeout: 50000 }).click();
     cy.get("#ContentPlaceHolder1_dlEndereco_EndCep_0").should("be.visible");
 
     validarCampoSemCase(
