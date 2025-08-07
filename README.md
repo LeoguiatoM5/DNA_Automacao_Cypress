@@ -124,3 +124,5 @@ cy.should()         → Faz asserções (testes)
 ```
 
 ---
+
+npx cypress run --spec "cypress/e2e/Leonardo Guiato/CadastroDeCliente.cy.js"
