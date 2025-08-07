@@ -12,10 +12,9 @@ Cypress.on("uncaught:exception", () => false);
 
 Cypress.on("fail", (error, runnable) => {
   erros.push(error.message);
-  return false; // nÃ£o para o teste
+  return false;
 });
 
-// Wrapper para executar comando e registrar erro, continuar fluxo
 function tentarComando(comandoFn, descricao) {
   return comandoFn().catch((err) => {
     erros.push(`Erro em "${descricao}": ${err.message}`);
@@ -75,7 +74,6 @@ describe("Cadastro de Cliente - fluxo completo com captura de erros e otimizaÃ§Ã
   });
 
   it("Executa fluxo completo sem travar e registra erros", () => {
-    // Menu > Cadastro de Cliente
     tentarComando(
       () =>
         cy.get("#nav > :nth-child(3) > .sf-with-ul", { timeout: 5000 }).click(),
@@ -92,9 +90,8 @@ describe("Cadastro de Cliente - fluxo completo com captura de erros e otimizaÃ§Ã
       "clicar novo PDV"
     );
 
-    cy.wait(2000); // espera fixa curta para evitar travar
+    cy.wait(2000);
 
-    // Seleciona JurÃ­dica
     tentarComando(
       () =>
         cy
@@ -113,7 +110,6 @@ describe("Cadastro de Cliente - fluxo completo com captura de erros e otimizaÃ§Ã
       "selecionar tipo cliente CLIENTE - Bayer"
     );
 
-    // Preenche razÃ£o social e CNPJ
     tentarComando(
       () =>
         cy
@@ -130,7 +126,6 @@ describe("Cadastro de Cliente - fluxo completo com captura de erros e otimizaÃ§Ã
       "digitar CNPJ"
     );
 
-    // Fechar popup e verificar CNPJ
     tentarComando(
       () =>
         cy
@@ -151,7 +146,6 @@ describe("Cadastro de Cliente - fluxo completo com captura de erros e otimizaÃ§Ã
       "clicar verificar CNPJ"
     );
 
-    // Preencher nome fantasia
     tentarComando(
       () =>
         cy
@@ -160,7 +154,6 @@ describe("Cadastro de Cliente - fluxo completo com captura de erros e otimizaÃ§Ã
       "digitar nome fantasia"
     );
 
-    // Selecionar setor de venda e adicionar
     tentarComando(
       () =>
         cy

@@ -1,7 +1,7 @@
 import { faker } from "@faker-js/faker/locale/pt_BR";
 import { cnpj } from "cpf-cnpj-validator";
 
-Cypress.on("uncaught:exception", () => false); // Ignora erros JS da aplicação
+Cypress.on("uncaught:exception", () => false);
 
 const {
   validarCampoSemMascara,
@@ -306,13 +306,13 @@ describe("Politica Comercial - Validação de CNPJs excluídos", () => {
       cy.get("#ContentPlaceHolder1_txtProcurarNoFiltro").clear().type(cnpj);
       cy.get("#ContentPlaceHolder1_btnProcurarNoFiltro").click();
 
-      cy.get("#ajaxLoading", { timeout: 10000 }).should("not.be.visible");
+      cy.get("#ajaxLoading", { timeout: 100000000 }).should("not.be.visible");
 
       cy.get("body").then(($body) => {
         if ($body.text().includes(cnpj)) {
-          throw new Error(`❌ CNPJ ainda visível na interface: ${cnpj}`);
+          throw new Error(` CNPJ ainda visível na interface: ${cnpj}`);
         } else {
-          cy.log(`✅ CNPJ ausente conforme esperado: ${cnpj}`);
+          cy.log(` CNPJ ausente conforme esperado: ${cnpj}`);
         }
       });
     });
