@@ -8,12 +8,15 @@ function validarCampoSemMascara(selector, valorEsperado) {
     });
 }
 
-function validarCampoSemCase(selector, valorEsperado) {
-  cy.get(selector, { timeout: 10000 })
+function validarCampoSemCase(seletor, valorEsperado) {
+  cy.get(seletor)
+    .should("exist")
     .should("be.visible")
     .invoke("val")
-    .then((val) => {
-      expect(val.toLowerCase()).to.equal(valorEsperado.toLowerCase());
+    .then((valorObtido) => {
+      expect(valorObtido?.toLowerCase().trim()).to.eq(
+        valorEsperado.toLowerCase().trim()
+      );
     });
 }
 

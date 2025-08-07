@@ -2,14 +2,14 @@
   "stats": {
     "suites": 1,
     "tests": 1,
-    "passes": 0,
+    "passes": 1,
     "pending": 0,
-    "failures": 1,
-    "start": "2025-07-15T19:33:50.455Z",
-    "end": "2025-07-15T19:34:11.099Z",
-    "duration": 20644,
+    "failures": 0,
+    "start": "2025-07-17T12:14:42.045Z",
+    "end": "2025-07-17T12:15:12.654Z",
+    "duration": 30609,
     "testsRegistered": 1,
-    "passPercent": 0,
+    "passPercent": 100,
     "pendingPercent": 0,
     "other": 0,
     "hasOther": false,
@@ -18,16 +18,16 @@
   },
   "results": [
     {
-      "uuid": "4e881874-e892-4197-ab9b-0288ad6c1836",
+      "uuid": "a9985b1e-8b23-453d-998b-e97fec809c2a",
       "title": "",
-      "fullFile": "cypress\\e2e\\Tiago Pavão\\cadastroproduto.cy.js",
-      "file": "cypress\\e2e\\Tiago Pavão\\cadastroproduto.cy.js",
+      "fullFile": "cypress\\e2e\\Tiago Pavão\\cadastroProduto.cy.js",
+      "file": "cypress\\e2e\\Tiago Pavão\\cadastroProduto.cy.js",
       "beforeHooks": [],
       "afterHooks": [],
       "tests": [],
       "suites": [
         {
-          "uuid": "25f60365-d82f-4b0b-9459-ef32dbfc7f1c",
+          "uuid": "ca1b62b3-96b1-46e7-844e-f3b8f2f271a1",
           "title": "Fluxo após login válido",
           "fullFile": "",
           "file": "",
@@ -38,33 +38,29 @@
               "title": "Cadastro Produto SKU",
               "fullTitle": "Fluxo após login válido Cadastro Produto SKU",
               "timedOut": null,
-              "duration": 20597,
-              "state": "failed",
-              "speed": null,
-              "pass": false,
-              "fail": true,
+              "duration": 30527,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
               "pending": false,
               "context": null,
-              "code": "const nomeproduto = \"Produto Teste Automação7\";\nconst ean = \"7894561469\";\nconst codigoproduto = \"128\";\ncy.get(':nth-child(4) > .sf-with-ul').click();\ncy.contains(\"Produto (SKU)\").click();\ncy.get('#ContentPlaceHolder1_btNovoProduto').click();\ncy.get('#ContentPlaceHolder1_dropDivisaoCadastro').select(\"CARDIOLOGIA\");\ncy.get('#ContentPlaceHolder1_dropGrupoProdutoCadastro').select(\"CARDIOLOGIA - ASPIRINA PREVENT\");\ncy.get('#ContentPlaceHolder1_dropProduto').select(\"ASPIRINA\");\ncy.get('#ContentPlaceHolder1_txtProDsc').type(\"Produto Teste\");\ncy.get('#ContentPlaceHolder1_txtProNome').type(nomeproduto);\ncy.get('#ContentPlaceHolder1_txtProEAN').type(ean);\ncy.get('#ContentPlaceHolder1_txtProCod').type(codigoproduto);\ncy.get('.grid2 > .campo > .switch > .slider').click();\ncy.get('#ContentPlaceHolder1_txtQTdCaixas').type(\"10\");\ncy.get('#ContentPlaceHolder1_txtQtdDentroCaixa').type(\"10\");\ncy.get('#ContentPlaceHolder1_btSalvar').click();\ncy.get('#ContentPlaceHolder1_txtProdutoNomeFiltro').type(nomeproduto);\ncy.get('#ContentPlaceHolder1_BtnProcurar').click();\ncy.get('.gridRow > :nth-child(4)').should(\"contain.text\", ean);",
-              "err": {
-                "message": "AssertionError: Timed out retrying after 4000ms: Expected to find element: `#ContentPlaceHolder1_txtProdutoNomeFiltro`, but never found it.",
-                "estack": "AssertionError: Timed out retrying after 4000ms: Expected to find element: `#ContentPlaceHolder1_txtProdutoNomeFiltro`, but never found it.\n    at Context.eval (https://homologacaoesp.interplayers.com.br/__cypress/tests?p=cypress\\e2e\\Tiago%20Pavão\\cadastroproduto.cy.js:36:8)",
-                "diff": null
-              },
-              "uuid": "eb714c9a-0ca8-4702-8f1a-2b4a8d3a7064",
-              "parentUUID": "25f60365-d82f-4b0b-9459-ef32dbfc7f1c",
+              "code": "cy.log(\"Cadastro Novo Produto SKU\");\ncadastroProduto();\ncy.log(\"Bucar Produto Cadastrado\");\nbuscarProduto();",
+              "err": {},
+              "uuid": "851b8680-9ca5-4b8b-80c8-ff0b11854051",
+              "parentUUID": "ca1b62b3-96b1-46e7-844e-f3b8f2f271a1",
               "isHook": false,
               "skipped": false
             }
           ],
           "suites": [],
-          "passes": [],
-          "failures": [
-            "eb714c9a-0ca8-4702-8f1a-2b4a8d3a7064"
+          "passes": [
+            "851b8680-9ca5-4b8b-80c8-ff0b11854051"
           ],
+          "failures": [],
           "pending": [],
           "skipped": [],
-          "duration": 20597,
+          "duration": 30527,
           "root": false,
           "rootEmpty": false,
           "_timeout": 2000
