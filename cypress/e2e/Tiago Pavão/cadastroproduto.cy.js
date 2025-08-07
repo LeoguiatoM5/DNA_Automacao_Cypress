@@ -5,7 +5,11 @@ Cypress.on("uncaught:exception", (err, runnable) => {
 });
 //https://talkingabouttesting.com/2021/09/13/como-criar-fixtures-com-dados-aleatorios-com-cypress-e-faker/
 //https://www.npmjs.com/package/@faker-js/faker
+
 describe("Fluxo após login válido", () => {
+  const nomeproduto = faker.commerce.productName();
+  const ean = faker.string.numeric(13);
+  const codigoproduto = faker.number.int({ min: 999 }).toString();
   before(() => {
     cy.visit(
       "https://homologacaoesp.interplayers.com.br/PRJ/Especialidades/Acesso.aspx"
@@ -21,15 +25,8 @@ describe("Fluxo após login válido", () => {
     cy.get("#ContentPlaceHolder1_Control_Login2_Login1_LoginButton").click();
   });
 
-  it("Cadastro Produto SKU", () => {
-    //const nomeproduto= "Produto Teste Automação7"
-    const nomeproduto = faker.commerce.productName();
-    const ean = faker.string.numeric(13);
-    const codigoproduto = faker.number.int({ min: 999 }).toString();
-    //const ean= "7894561469" 
-    //const codigoproduto= "128"
 
-   
+  function cadastroProduto() {
     cy.get(':nth-child(4) > .sf-with-ul').click();
     cy.contains("Produto (SKU)").click();
     cy.get('#ContentPlaceHolder1_btNovoProduto').click()
@@ -44,13 +41,21 @@ describe("Fluxo após login válido", () => {
     cy.get('#ContentPlaceHolder1_txtQTdCaixas').type("10")
     cy.get('#ContentPlaceHolder1_txtQtdDentroCaixa').type("10")
     cy.get('#ContentPlaceHolder1_btSalvar').click()
+  }
 
-
+  function buscarProduto() {
     cy.get('#ContentPlaceHolder1_txtProdutoNomeFiltro').type(nomeproduto)
     cy.get('#ContentPlaceHolder1_BtnProcurar').click()
-        cy.get('.gridRow > :nth-child(4)').should ("contain.text",ean)
-    
+    cy.get('.gridRow > :nth-child(4)').should ("contain.text",ean)
+  }
 
-   
+  it("Cadastro Produto SKU", () => {
+    cy.log ("Cadastro Novo Produto SKU");
+    cadastroProduto();
+
+    cy.log("Bucar Produto Cadastrado");
+    buscarProduto();
+     
+       
   });
 });
