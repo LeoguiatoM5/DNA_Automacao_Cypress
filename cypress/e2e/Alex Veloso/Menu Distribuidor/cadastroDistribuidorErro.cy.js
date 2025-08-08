@@ -1,4 +1,4 @@
-const { registrarErrosJS } = require("../../pages/tratamentos/errosJS.js");
+const { registrarErrosJS } = require("../../../pages/tratamentos/errosJS.js");
 registrarErrosJS();
 
 describe("Cadastro de novo Distribuidor", () => {

@@ -1,16 +1,16 @@
 import { faker } from "@faker-js/faker/locale/pt_BR";
 
-const { registrarErrosJS } = require("../../pages/tratamentos/errosJS.js");
+const { registrarErrosJS } = require("../../../pages/tratamentos/errosJS.js");
 const {
   validarCampoSemMascara,
   validarCampoSemCase,
-} = require("../../pages/tratamentos/validacoesCampos.js");
+} = require("../../../pages/tratamentos/validacoesCampos.js");
 
 registrarErrosJS();
 
 describe("Cadastro Grupo Distribuidor", () => {
   //Variáveis
-const nomeGrupo = faker.company.name();
+const nomeGrupo = `Teste DNA-${faker.company.name()}`;
 
   beforeEach(() => {
     cy.visit(
