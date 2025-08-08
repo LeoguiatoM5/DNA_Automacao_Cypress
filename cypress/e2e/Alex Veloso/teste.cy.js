@@ -4,7 +4,9 @@ registrarErrosJS();
 describe("Descrição do Teste", () => {
   //Variáveis
 
-  beforeEach(() => {
+
+   it ("Fluxo de Cadastro de Novo Distribuidor", () => { 
+ 
     cy.visit(
       "https://homologacaoesp.interplayers.com.br/PRJ/Especialidades/Acesso.aspx"
     );
@@ -15,7 +17,9 @@ describe("Descrição do Teste", () => {
       "12345678"
     );
     cy.get("#ContentPlaceHolder1_Control_Login2_Login1_LoginButton").click();
-  });
+  
 });
 
-module.exports = {};
+});
+
+
