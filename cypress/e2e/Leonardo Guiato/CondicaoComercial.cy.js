@@ -32,27 +32,27 @@ describe("Criação Comercial e validação", () => {
       "https://homologacaoesp.interplayers.com.br/PRJ/Especialidades/PoliticaCondicaoHTML/CondicaoComercial_Lista.aspx?cod=3F44431E-0ECF-4390-87A3-B03EAB0D0F68|2163"
     );
     cy.get("#ContentPlaceHolder1_btnNova").click();
-    cy.get("#ContentPlaceHolder1_txtDescricao", { timeout: 4000 }).type(
+    cy.get("#ContentPlaceHolder1_txtDescricao", { timeout: 40000 }).type(
       nomeEmpresa
     );
-    cy.get("#ContentPlaceHolder1_ddlPoliticaComercial", { timeout: 10000 })
+    cy.get("#ContentPlaceHolder1_ddlPoliticaComercial", { timeout: 40000 })
       .should("be.visible")
-      .select("REIS-BATISTA - Vigência 05/05/2025  - 05/05/2027");
+      .select("21973");
     cy.get("#ContentPlaceHolder1_Calendario_txtDtInicio")
-      .invoke("val", "05/05/2025")
+      .invoke("val", "23/07/2025")
       .trigger("change");
 
     cy.get("#ContentPlaceHolder1_Calendario_txtDtFim")
-      .invoke("val", "05/05/2027")
+      .invoke("val", "23/08/2025")
       .trigger("change");
     cy.get("#ContentPlaceHolder1_ddlResponsavel").select("4_BIO");
-    cy.get("#ContentPlaceHolder1_txtValorMinimoPedido").type("1");
+    cy.get("#ContentPlaceHolder1_txtValorMinimoPedido").type("1000");
     cy.get(":nth-child(10) > .switch > .slider").click();
     cy.get("#ContentPlaceHolder1_btnProsseguirCondicao").click();
   }
 
   function CadastroUsuario() {
-    cy.get("#ContentPlaceHolder1_rptUsuarioDisponivel_imgSelecionar_0").click();
+    cy.get("#ContentPlaceHolder1_btnAddTodosUsuarios").click();
     cy.get("#ContentPlaceHolder1_btnProsseguirUsuario").click();
   }
 
@@ -74,18 +74,18 @@ describe("Criação Comercial e validação", () => {
   }
 
   function CadastroDistribuidoresComercial() {
-    cy.get("#ContentPlaceHolder1_rptDistribuidor_imgSelecionar_0").click();
+    cy.get("#ContentPlaceHolder1_btnAdicionarTodos").click();
     cy.get("#ContentPlaceHolder1_btnProsseguirProduto").click();
   }
 
   function CadastrarProduto() {
-    cy.get("#ContentPlaceHolder1_ddlFiltroDivisaoProdutos").select(
+    /*cy.get("#ContentPlaceHolder1_ddlFiltroDivisaoProdutos").select(
       "CARDIOLOGIA"
     );
     cy.get("#ContentPlaceHolder1_ddlFiltroLinhaProdutos").select(
       "CARDIOLOGIA - FIRIALTA"
     );
-    cy.get("#ContentPlaceHolder1_ddlFiltroMarcaProdutos").select("FIRIALTA");
+    cy.get("#ContentPlaceHolder1_ddlFiltroMarcaProdutos").select("FIRIALTA"); */
     cy.get("#ContentPlaceHolder1_btnProsseguirCombo").click();
   }
 
@@ -94,8 +94,8 @@ describe("Criação Comercial e validação", () => {
     cy.get("#ContentPlaceHolder1_ddlComboTipo").select("3");
     cy.get("#ContentPlaceHolder1_ddlComboTipoProduto", {
       timeout: 4000,
-    }).select("1937");
-    cy.get("#ContentPlaceHolder1_ddlProdutoCombo").select("1937");
+    }).select("1955");
+    cy.get("#ContentPlaceHolder1_ddlProdutoCombo").select("MIRENA");
     cy.get("#ContentPlaceHolder1_txtQtdCombo").type("2");
     cy.get("#ContentPlaceHolder1_btnAdicionarProdutoCombo").click();
     cy.get("#ContentPlaceHolder1_btnGravarCondicao").click();
