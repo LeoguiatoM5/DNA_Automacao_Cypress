@@ -1,5 +1,5 @@
 node_modules          
-cypress/videos/loginValidoFluxoCadastroCliente.cy.js.mp4
+cypress/videos/
 cypress/screenshots/loginValidoFluxoCadastroCliente.cy.js/Fluxo após login válido -- Cadastro de Cliente (failed).png
 cypress/reports/html/mochawesome.html
 text.md
