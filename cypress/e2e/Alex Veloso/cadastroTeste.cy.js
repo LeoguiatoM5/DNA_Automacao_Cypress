@@ -92,3 +92,43 @@ Endereço tipo comercial
 
 
 */
+
+const cadastroProcurado = 'SC - TABELA ICMS 17,00% SAUDE FEMININA';
+
+cy.contains(cadastroProcurado) // encontra o texto da coluna da esquerda -- nome da tabela criada
+  .parent() // sobe para o container que agrupa texto e inputs na mesma linha
+  .within(() => {
+    // aqui dentro, estamos apenas na linha certa
+    
+    // exemplo: clicar no primeiro input
+    cy.get('input').eq(0).click();
+
+    // ou, preencher o segundo input com um novo valor
+    cy.get('input').eq(0).clear().type('999,9999'); // criar constante de valor 
+
+    cy.get('input').eq(1).click();
+
+    // ou, preencher o psegundo input com um novo valor
+    cy.get('input').eq(1).clear().type('999,9999');
+  });
+
+
+
+  cy.contains(texto)
+  .parent()
+  .find('input')
+  .eq(1) // segundo campo
+  .clear()
+  .type('123,4567');
+
+
+ cy.get('table tbody tr').contains('João Silva').should('exist');
+
+ cy.get('tr.gridRow > :nth-child(3)')
+
+ cy.get('#ContentPlaceHolder1_pnlPrecos > .panel')
+
+ cy.get('#ContentPlaceHolder1_rptResultado_gridTabelaPrecos_0_txtPrecoFabrica_28')
+
+cy.get('#ContentPlaceHolder1_rptResultado_pnlTabelaPrecos_0 > .panel')
+cy.get('#ContentPlaceHolder1_rptResultado_pnlTabelaPrecos_0 > .panel')

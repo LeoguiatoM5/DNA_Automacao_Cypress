@@ -1,15 +1,15 @@
 import { faker } from "@faker-js/faker/locale/pt_BR";
 import { cnpj } from "cpf-cnpj-validator";
 
-const { registrarErrosJS } = require("../../pages/tratamentos/errosJS.js");
+const { registrarErrosJS } = require("../../../pages/tratamentos/errosJS.js");
 registrarErrosJS();
 
 describe("Cadastro de novo Distribuidor", () => {
   //Variáveis
   const cnpjDistribuidor = cnpj.generate();
   //const cnpjDistribuidor = "01448559000141";
-  const nomeFantasiaDistribuidor = faker.company.name();
-  const razaoSocialDistribuidor = faker.company.name();
+  const nomeFantasiaDistribuidor = `Teste DNA-${faker.company.name()}`;
+  const razaoSocialDistribuidor = `Teste DNA-${faker.company.name()}`;
   //const nomeFantasiaDistribuidor = "Distribuidor 4 DNA";
   const logradouro = "Rua TESTE";
   const bairro = "Centro";
@@ -62,7 +62,7 @@ describe("Cadastro de novo Distribuidor", () => {
     cy.get('#ContentPlaceHolder1_btEnviar').click(); 
   }
 
-  function buscaNovoDisatribuidor() {
+  function buscaNovoDistribuidor() {
     cy.get('#ContentPlaceHolder1_txtCPFCNPJ').type(cnpjDistribuidor)
     cy.get('#ContentPlaceHolder1_BtnProcurar').click(); 
     cy.get('tbody > :nth-child(2) > :nth-child(3)').should("contain.text",cnpjDistribuidor);    
@@ -82,7 +82,7 @@ describe("Cadastro de novo Distribuidor", () => {
     enderecoNovoDistribuidor();
 
     cy.log("Busca novo distribuidor")
-    buscaNovoDisatribuidor();
+    buscaNovoDistribuidor();
 
   });
 });
